@@ -1,30 +1,68 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <router-view />
 </template>
 
+<script lang="ts" setup>
+import supabase from '@/backend/app';
+import { useStore } from 'vuex';
+import { addUser } from '@/backend/database';
+
+const store = useStore()
+
+const created = () => {
+  supabase.auth.onAuthStateChange(async (event, session) => {
+    switch (event) {
+      case 'SIGNED_IN': {
+        const { data } = await addUser(`${session?.user?.id}`, session?.user?.user_metadata)
+        store.dispatch('setAuthUser', data)
+        break
+      }
+      case 'SIGNED_OUT':
+        store.dispatch('setAuthUser', null)
+        break
+      default:
+        break
+    }
+  })
+
+}
+store.dispatch('setLoading', true)
+created()
+store.dispatch('setLoading', false)
+</script>
+
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  padding: 0;
+  margin: 0;
+  font-family: "Kanit", sans-serif;
 }
 
-#nav {
-  padding: 30px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+:root {
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #aeafff;
+
+  --primary-background-color: #7a88b3;
+  --secondary-background-color: #aeafff;
+}
+
+.disable-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 </style>
