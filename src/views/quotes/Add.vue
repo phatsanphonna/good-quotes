@@ -10,6 +10,8 @@
           <label for="add-quote">คำคมที่ต้องการเพิ่ม</label>
           <br />
           <input
+            type="text"
+            autocomplete="off"
             id="add-quote"
             required
             v-model="insertQuote.quote"
@@ -17,7 +19,7 @@
           />
         </div>
         <br />
-        <div class="submit">
+        <div class="submit disable-select">
           <button type="submit">เพิ่มคำคม</button>
         </div>
       </form>
@@ -61,7 +63,7 @@ const handleSubmit = async () => {
 }
 
 .title h1 {
-  @apply text-5xl font-bold;
+  @apply text-5xl lg:text-7xl font-bold;
 }
 
 form input {
