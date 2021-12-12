@@ -48,7 +48,7 @@
           <div class="popover">
             <div class="menu">
               <ul>
-                <li @click="signInWithGoogle" style="color: green;">
+                <li @click="handleSignIn" style="color: green;">
                   ลงชื่อเข้าใช้ด้วย{{ ' ' }}
                   <font-awesome-icon :icon="['fab', 'google']" />
                 </li>
@@ -71,6 +71,11 @@ import Loading from './Loading.component.vue';
 const store = useStore()
 
 const caretClick = ref(false)
+
+const handleSignIn = async () => {
+  caretClick.value = false
+  await signInWithGoogle()
+}
 
 const handleSignOut = async () => {
   caretClick.value = false

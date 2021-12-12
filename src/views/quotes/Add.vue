@@ -5,6 +5,7 @@
         <h1>เพิ่มคำคม</h1>
       </div>
       <br />
+
       <form @submit.prevent="handleSubmit">
         <div>
           <label for="add-quote">คำคมที่ต้องการเพิ่ม</label>
@@ -14,8 +15,10 @@
             autocomplete="off"
             id="add-quote"
             required
-            v-model="insertQuote.quote"
             :disabled="store.getters.isLoading"
+            v-model="insertQuote.quote"
+            placeholder="แกอ่ะ เข้ามานั่งในใจเราหน่อยจิ"
+            maxlength="30"
           />
         </div>
         <br />
@@ -67,7 +70,7 @@ const handleSubmit = async () => {
 }
 
 form input {
-  @apply text-black rounded px-2 py-1;
+  @apply text-black rounded px-2 py-1 w-auto;
 }
 
 form label {

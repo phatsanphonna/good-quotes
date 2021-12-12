@@ -23,6 +23,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/quotes/Index.vue')
   },
   {
+    path: '/quotes/:id',
+    component: () => import('@/views/quotes/Id.vue')
+  },
+  {
     path: '/quotes/add',
     component: () => import('@/views/quotes/Add.vue'),
     beforeEnter: (from, to, next) => {
@@ -31,7 +35,10 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/Login.vue'),
+    beforeEnter: (from, to, next) => {
+      store.getters.authUser ? router.push({ path: '/me' }) : next()
+    }
   }
 ]
 
