@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '@/store'
 import Home from '@/views/Home.vue'
+import supabase from '@/backend/app'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -37,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     component: () => import('@/views/Login.vue'),
     beforeEnter: (from, to, next) => {
-      store.getters.authUser ? router.push({ path: '/me' }) : next()
+      !supabase.auth.user() ? next() : router.push({ path: '/' })
     }
   }
 ]

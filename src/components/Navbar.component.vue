@@ -64,11 +64,13 @@
 <script lang="ts" setup>
 import { signInWithGoogle, signOut } from '@/backend/auth';
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
 import Loading from './Loading.component.vue';
 
 const store = useStore()
+const router = useRouter()
 
 const caretClick = ref(false)
 
@@ -80,6 +82,7 @@ const handleSignIn = async () => {
 const handleSignOut = async () => {
   caretClick.value = false
   await signOut()
+  router.push({ path: '/login' })
 }
 </script>
 

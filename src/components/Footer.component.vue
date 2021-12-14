@@ -2,7 +2,7 @@
   <footer class="footer">
     <p>2021 Phatsanphon Nakaranurak</p>
     <span>
-      <a href="https://github.com/ssuniie" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/ssuniie/good-quotes" target="_blank" rel="noopener noreferrer">
         <font-awesome-icon :icon="['fab', 'github']" />
       </a>
       <font-awesome-icon :icon="['fab', 'facebook']" />

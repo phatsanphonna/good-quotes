@@ -45,6 +45,7 @@ import { useStore } from 'vuex';
 import Layout from '@/components/Layout.component.vue';
 import { signOut } from '@/backend/auth';
 import { useRouter } from 'vue-router';
+import { updateProfile } from '@/backend/database';
 
 const store = useStore()
 const router = useRouter()
@@ -54,14 +55,35 @@ const account = reactive({
   name: store.getters.authUser.name
 })
 
-const handleSubmit = () => {
-  null
+const handleSubmit = async () => {
+  store.dispatch('setLoading', true)
+
+  const payload = {
+    id: store.getters.authUser.id,
+    email: store.getters.authUser.email,
+    name: account.name,
+    quotes_add: store.getters.authUser.quotes_add,
+    profile_picture: store.getters.authUser.profile_picture,
+    created_at: store.getters.authUser.created_at
+  }
+  const { error } = await updateProfile(payload)
+  if (error) console.error(error)
+
+  store.dispatch('setAuthUser', payload)
+
+  store.dispatch('setLoading', false)
+  alert('แก้ไขข้อมูลสำเร็จแล้ว')
 }
 
 const handleSignOut = async () => {
+  store.dispatch('setLoading', true)
+
   await signOut()
   store.dispatch('setAuthUser', null)
+
   router.push({ path: '/login', force: true })
+
+  store.dispatch('setLoading', false)
 }
 
 </script>

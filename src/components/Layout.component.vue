@@ -12,7 +12,6 @@
 <script lang="ts" setup>
 import Navbar from './Navbar.component.vue';
 import Footer from './Footer.component.vue';
-
 </script>
 
 <style scoped>

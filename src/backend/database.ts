@@ -1,3 +1,4 @@
+import User from "@/types/User.type";
 import supabase from "./app";
 
 export async function addUser(uid: string, userMetadata: any): Promise<any> {
@@ -39,4 +40,8 @@ export async function queryRandomQuote(): Promise<any> {
 
 export async function addQuote(quote: string, uid: string): Promise<any> {
     return await supabase.from('quotes').upsert({ quote, author: uid }, { returning: "minimal" })
+}
+
+export async function updateProfile(user: User): Promise<any> {
+    return await supabase.from('users').upsert(user, { returning: "minimal" })
 }
