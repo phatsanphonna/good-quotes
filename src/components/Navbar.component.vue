@@ -2,7 +2,7 @@
   <header class="header">
     <div class="title">
       <router-link to="/">คำคมสุดเฉียบ</router-link>
-      <Loading v-if="store.getters.isLoading" />
+      <Loading size="sm" />
     </div>
 
     <div>
@@ -16,14 +16,14 @@
         </span>
 
         <img
-          @click="() => caretClick = !caretClick"
+          @click="handleCaretClick"
           :src="store.getters.authUser.profile_picture"
           v-if="store.getters.authUser"
           class="pfp"
         />
-        <font-awesome-icon icon="user" @click="() => caretClick = !caretClick" v-else />
+        <font-awesome-icon icon="user" @click="handleCaretClick" v-else />
 
-        <p @click="() => caretClick = !caretClick">
+        <p @click="handleCaretClick">
           <font-awesome-icon icon="caret-up" v-if="caretClick" />
           <font-awesome-icon icon="caret-down" v-else />
         </p>
@@ -73,6 +73,8 @@ const store = useStore()
 const router = useRouter()
 
 const caretClick = ref(false)
+
+const handleCaretClick = () => caretClick.value = !caretClick.value
 
 const handleSignIn = async () => {
   caretClick.value = false

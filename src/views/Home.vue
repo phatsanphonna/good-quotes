@@ -11,7 +11,7 @@
           <button @click="randomQuote">สุ่มคำคมใหม่</button>
         </div>
       </div>
-      <Loading v-else />
+      <Loading v-else size="4x" />
     </Layout>
   </div>
 </template>

@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import store from '@/store'
-import Home from '@/views/Home.vue'
 import supabase from '@/backend/app'
 
-const routes: Array<RouteRecordRaw> = [
+import Home from '@/views/Home.vue'
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Home

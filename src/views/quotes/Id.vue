@@ -1,8 +1,8 @@
 <template>
   <div class="quotes-id">
     <Layout>
-      <div class>Helo 2</div>
-    </Layout>
+      <SquareQuoteCard />
+</Layout>
   </div>
 </template>
 
@@ -10,6 +10,6 @@
 import { useRoute } from 'vue-router';
 
 import Layout from '@/components/Layout.component.vue';
-
+import SquareQuoteCard from '@/components/SquareQuoteCard.component.vue';
 const route = useRoute()
 </script>
