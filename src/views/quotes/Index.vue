@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { queryQuote } from '@/backend/database';
+import { queryQuotes } from '@/backend/database';
 import { useStore } from 'vuex';
 
 import Layout from '@/components/Layout.component.vue';
@@ -32,7 +32,7 @@ const quotes = ref<Quote[]>([])
 onMounted(async () => {
   store.dispatch('setLoading', true)
 
-  const { data, error } = await queryQuote()
+  const { data, error } = await queryQuotes()
   if (error) console.error(error)
 
   quotes.value = data

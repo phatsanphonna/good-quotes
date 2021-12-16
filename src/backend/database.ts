@@ -1,3 +1,4 @@
+import Quote from "@/types/Quote.type";
 import User from "@/types/User.type";
 import supabase from "./app";
 
@@ -54,7 +55,7 @@ export async function queryRandomQuote(): Promise<any> {
  * 
  * @returns {{ data, error }}
  */
-export async function queryQuote(): Promise<any> {
+export async function queryQuotes(): Promise<any> {
     const { data, error } = await supabase.from('quotes').select('*', { count: 'exact' });
 
     for (let i = 0; i < data!.length; i++) {
@@ -64,6 +65,17 @@ export async function queryQuote(): Promise<any> {
     }
 
     return { data, error };
+}
+
+export async function queryOneQuote(id: number): Promise<any> {
+    const { data, error } = await supabase.from('quotes').select('*').eq('id', id).select().single();
+
+    const { data: userData, error: userError } = await queryUser(data!.author)
+    if (userError) throw Error(userError)
+
+    data!.author = userData
+
+    return { data, error }
 }
 
 /**

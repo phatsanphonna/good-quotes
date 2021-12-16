@@ -1,13 +1,28 @@
 <template>
   <div class="square-quote-card">
     <div class="quote">
-      <h3>ถ้าเขาจะรัก ยืนเฉย ๆ เขาก็รัก</h3>
-      <p>โดย คนทำเว็บนี้เอง</p>
+      <h3>{{ props.quote!.quote }}</h3>
+      <p>โดย {{ props.quote!.author.name }}</p>
+      <!-- <span>วันที่ {{ props.quote.created_at }}</span> -->
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+interface Props {
+  quote: Quote | undefined;
+}
+
+import Quote from '@/types/Quote.type';
+import { defineProps, ref } from 'vue'
+
+const props = defineProps<Props>()
+const quoteCreatedAt = ref()
+
+quoteCreatedAt.value = () => {
+  const time = new Date(props.quote!.created_at)
+  return `${time.getDate}/${time.getMonth}/${time.getFullYear}`
+}
 
 </script>
 

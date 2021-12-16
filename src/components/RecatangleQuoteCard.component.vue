@@ -1,8 +1,8 @@
 <template>
   <div class="rectangle-quote-card">
-    <router-link :to="`/quotes/${id}`">
-      <h1>{{ quote }}</h1>
-    </router-link>
+    <!-- <router-link :to="`/quotes/${id}`"> -->
+    <h1>{{ quote }}</h1>
+    <!-- </router-link> -->
     <p>{{ props.author.name }}</p>
   </div>
 </template>
