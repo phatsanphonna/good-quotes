@@ -26,6 +26,7 @@
             v-model="account.name"
             placeholder="สมชายคุง"
             required
+            :disabled="store.getters.isLoading"
           />
         </div>
         <br />
