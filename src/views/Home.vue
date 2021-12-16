@@ -20,11 +20,10 @@
 import { ref, onMounted } from 'vue'
 import { useStore } from 'vuex';
 import { queryRandomQuote } from '@/backend/database';
+import Quote from '@/types/Quote.type';
 
 import Loading from '@/components/Loading.component.vue';
 import Layout from '@/components/Layout.component.vue';
-
-import Quote from '@/types/Quote.type';
 
 const store = useStore()
 

@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import supabase from '@/backend/app';
 import { useStore } from 'vuex';
+import supabase from '@/backend/app';
 import { addUser } from '@/backend/database';
 
 const store = useStore()

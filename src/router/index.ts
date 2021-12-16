@@ -10,10 +10,6 @@ const routes: RouteRecordRaw[] = [
     component: Home
   },
   {
-    path: '/about',
-    component: () => import('@/views/About.vue')
-  },
-  {
     path: '/me',
     component: () => import('@/views/Me.vue'),
     beforeEnter: (from, to, next) => {

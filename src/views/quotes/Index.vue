@@ -5,9 +5,9 @@
         <RecatangleQuoteCard
           v-for="quote in quotes"
           :key="quote.id"
+          :id="quote.id"
           :quote="quote.quote"
           :author="quote.author"
-          :id="quote.id"
         />
       </div>
       <Loading v-else size="4x" />

@@ -12,6 +12,7 @@
 
 <script lang="ts" setup>
 import { signInWithGoogle } from '@/backend/auth';
+
 import Layout from '@/components/Layout.component.vue';
 
 const handleSignIn = async () => {

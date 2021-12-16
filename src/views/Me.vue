@@ -42,11 +42,12 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { signOut } from '@/backend/auth';
+import { updateProfile } from '@/backend/database';
+import User from '@/types/User.type';
 
 import Layout from '@/components/Layout.component.vue';
-import { signOut } from '@/backend/auth';
-import { useRouter } from 'vue-router';
-import { updateProfile } from '@/backend/database';
 
 const store = useStore()
 const router = useRouter()
@@ -59,7 +60,7 @@ const account = reactive({
 const handleSubmit = async () => {
   store.dispatch('setLoading', true)
 
-  const payload = {
+  const payload: User = {
     id: store.getters.authUser.id,
     email: store.getters.authUser.email,
     name: account.name,

@@ -1,16 +1,13 @@
 <template>
   <header class="header">
-    <div class="title">
-      <router-link to="/">คำคมสุดเฉียบ</router-link>
-      <Loading size="sm" />
-    </div>
+    <Title />
 
     <div>
       <div class="user">
         <span class="nav-col">
           <router-link to="/quotes" class="nav">ดูคำคม</router-link>
+          {{ ' | ' }}
           <router-link to="/quotes/add">
-            {{ ' ' }}|
             <span class="nav">เพิ่มคำคม</span>
           </router-link>
         </span>
@@ -62,12 +59,12 @@
 </template>
 
 <script lang="ts" setup>
-import { signInWithGoogle, signOut } from '@/backend/auth';
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import { signInWithGoogle, signOut } from '@/backend/auth';
 
-import Loading from './Loading.component.vue';
+import Title from './Title.component.vue';
 
 const store = useStore()
 const router = useRouter()
@@ -97,19 +94,6 @@ const handleSignOut = async () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.header .title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  @apply font-semibold;
-  @apply hover:underline transition-all;
-}
-
-.header .title > * {
-  margin: 0px 4px;
 }
 
 .header .user {
