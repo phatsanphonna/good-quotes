@@ -19,7 +19,7 @@ import Footer from './Footer.component.vue';
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
 
   background-color: var(--primary-background-color);
