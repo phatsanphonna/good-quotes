@@ -23,6 +23,7 @@ import { useStore } from 'vuex';
 import Layout from '@/components/Layout.component.vue';
 import Loading from '@/components/Loading.component.vue';
 import RecatangleQuoteCard from '@/components/RecatangleQuoteCard.component.vue';
+
 import Quote from '@/types/Quote.type';
 
 const store = useStore()

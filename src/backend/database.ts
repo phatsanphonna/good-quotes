@@ -70,6 +70,8 @@ export async function queryQuotes(): Promise<any> {
 export async function queryOneQuote(id: number): Promise<any> {
     const { data, error } = await supabase.from('quotes').select('*').eq('id', id).select().single();
 
+    // console.log('data', data)
+
     const { data: userData, error: userError } = await queryUser(data!.author)
     if (userError) throw Error(userError)
 
