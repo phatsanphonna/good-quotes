@@ -5,7 +5,10 @@
         <h1>ลงชื่อเข้าใช้</h1>
       </div>
       <br />
-      <button @click="handleSignIn">ลงชื่อเข้าใช้ด้วย Google</button>
+      <button @click="handleSignIn">
+        ลงชื่อเข้าใช้ด้วย{{ ' ' }}
+        <font-awesome-icon :icon="['fab', 'google']" />
+      </button>
     </Layout>
   </div>
 </template>
