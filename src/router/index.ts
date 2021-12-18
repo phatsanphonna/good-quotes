@@ -20,10 +20,10 @@ const routes: RouteRecordRaw[] = [
     path: '/quotes',
     component: () => import('@/views/quotes/Index.vue')
   },
-  // {
-  //   path: '/quotes/:id',
-  //   component: () => import('@/views/quotes/Id.vue')
-  // },
+  {
+    path: '/quotes/:id',
+    component: () => import('@/views/quotes/Id.vue')
+  },
   {
     path: '/quotes/add',
     component: () => import('@/views/quotes/Add.vue'),

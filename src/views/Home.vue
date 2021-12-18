@@ -8,7 +8,15 @@
         </div>
 
         <div class="btn">
-          <button @click="randomQuote">สุ่มคำคมใหม่</button>
+          <div class="btn-random">
+            <button @click="randomQuote">สุ่มคำคมใหม่</button>
+          </div>
+
+          <div class="btn-quote">
+            <button>
+              <router-link :to="`/quotes/${quote.id}`">ดูคำคมนี้</router-link>
+            </button>
+          </div>
         </div>
       </div>
       <Loading v-else size="4x" />
@@ -63,7 +71,15 @@ onMounted(async () => {
   @apply m-5 drop-shadow-md flex justify-center items-center;
 }
 
-.btn button {
+.btn > * {
+  @apply m-2;
+}
+
+.btn-random button {
   @apply px-4 py-2 rounded-full bg-white text-black hover:bg-green-600 hover:text-white transition-all;
+}
+
+.btn-quote button {
+  @apply px-4 py-2 rounded-full bg-white text-black hover:bg-yellow-500 hover:text-white transition-all;
 }
 </style>
